@@ -2059,9 +2059,9 @@ void modesSendSBSOutput(struct modesMessage *mm, struct aircraft *a) {
             p += sprintf(p, "MSG,3,,,%02X%02X%02X,,,,,,,%d,,,,,,,0,0,0,0",
             mm->aa1, mm->aa2, mm->aa3, mm->altitude);
         else
-            p += sprintf(p, "MSG,3,,,%02X%02X%02X,,,,,,,%d,,,%1.5f,%1.5f,,,"
+            p += sprintf(p, "MSG,3,,,%02X%02X%02X,%d,,,,,,%d,,,%1.5f,%1.5f,,,"
                             "0,0,0,0",
-            mm->aa1, mm->aa2, mm->aa3, mm->altitude, a->lat, a->lon);
+            mm->aa1, mm->aa2, mm->aa3, a->track, mm->altitude, a->lat, a->lon);
     } else if (mm->msgtype == 17 && mm->metype == 19 && mm->mesub == 1) {
         int vr = (mm->vert_rate_sign==0?1:-1) * (mm->vert_rate-1) * 64;
 
